@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.sdccd.cisc191.template.SceneController">
+   <children>
+      <Button layoutX="14.0" layoutY="884.0" mnemonicParsing="false" onAction="#switchToLauncherPage" prefHeight="100.0" prefWidth="200.0" text="Back">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Button>
+      <Text layoutX="514.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Java Game" wrappingWidth="471.00001859664917">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="26.0" layoutY="35.0" prefHeight="802.0" prefWidth="488.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="488.0" minWidth="10.0" prefWidth="488.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToSearchForItemScene" text="Search">
+               <font>
+                  <Font size="66.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToShopMenu" text="Shop" GridPane.rowIndex="1">
+               <font>
+                  <Font size="66.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToInventoryMenu" text="Inventory" GridPane.rowIndex="2">
+               <font>
+                  <Font size="66.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToUpdateNotesScene" text="Patch Notes" GridPane.rowIndex="4">
+               <font>
+                  <Font size="66.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToSettingsScene" text="Settings" GridPane.rowIndex="3">
+               <font>
+                  <Font size="66.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

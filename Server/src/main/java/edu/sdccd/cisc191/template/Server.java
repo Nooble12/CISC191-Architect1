@@ -1,52 +1,73 @@
 package edu.sdccd.cisc191.template;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-/**
- * This program is a server that takes connection requests on
- * the port specified by the constant LISTENING_PORT.  When a
- * connection is opened, the program sends the current time to
- * the connected socket.  The program will continue to receive
- * and process connections until it is killed (by a CONTROL-C,
- * for example).  Note that this server processes each connection
- * as it is received, rather than creating a separate thread
- * to process the connection.
- */
-public class Server {
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
-
-    public void start(int port) throws Exception {
-        serverSocket = new ServerSocket(port);
-        clientSocket = serverSocket.accept();
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            CustomerRequest request = CustomerRequest.fromJSON(inputLine);
-            CustomerResponse response = new CustomerResponse(request.getId(), "Jane", "Doe");
-            out.println(CustomerResponse.toJSON(response));
-        }
+public class Server
+{
+    private static final int PORT = 1234;
+    private static boolean isServerRunning = true;
+    public static void main (String[] args)
+    {
+       try(ServerSocket serverSocket = new ServerSocket(PORT))
+       {
+           while(isServerRunning)
+           {
+               //listens for client
+               Socket socket = serverSocket.accept();
+               System.out.println("New client connected");
+               handleClient(socket);
+           }
+       } catch (IOException e)
+       {
+           System.out.println("Server exception: " + e);
+       }
     }
 
-    public void stop() throws IOException {
-        in.close();
-        out.close();
-        clientSocket.close();
-        serverSocket.close();
-    }
+    public static void handleClient(Socket inSocket)
+    {
+        try(ObjectInputStream inputStream = new ObjectInputStream(inSocket.getInputStream()))
+        {
+            ObjectOutputStream outputStream = new ObjectOutputStream(inSocket.getOutputStream());
 
-    public static void main(String[] args) {
-        Server server = new Server();
-        try {
-            server.start(4444);
-            server.stop();
-        } catch(Exception e) {
+            ServerRequest request = (ServerRequest) inputStream.readObject();
+
+            if (request.getRequestType().equals("GET_UPDATE_NOTES"))
+            {
+                String updateNotesResponse = processUpdateNoteRequest();
+                //sends response back to client
+                outputStream.writeObject(updateNotesResponse);
+                outputStream.flush();
+            }
+            else if (request.getRequestType().equals("SHUTDOWN"))
+            {
+                outputStream.writeObject("Shutting Down");
+                outputStream.flush();
+                isServerRunning = false;
+            }
+
+        }catch (IOException | ClassNotFoundException e)
+        {
             e.printStackTrace();
+        } finally
+        {
+            try
+            {
+                inSocket.close();
+            } catch (IOException e)
+            {
+                System.out.println("Error closing input stream");
+            }
         }
     }
-} //end class Server
+
+    public static String processUpdateNoteRequest()
+    {
+        UpdateNotesResponse response = new UpdateNotesResponse();
+        return response.getUpdateNotes();
+    }
+}
+
