@@ -13,7 +13,7 @@ java -jar Client/target/Client-1.0.0.jar
 ## Module 1: 
   In the game, a one-dimensional array stores a loot table of items that the player can roll to obtain items.
 ## Module 2: 
-  The shop uses a two-dimensional array to display various items for the player to purchase.
+  The shop uses a two-dimensional array to display various items for the player to purchase. The array holds the position and contents of the item in the store.
 ## Module 3: 
   The game is displayed using JavaFX. Windows such as the shop and inventory are separate .fxml files.
 ## Module 4: 
@@ -29,3 +29,6 @@ java -jar Client/target/Client-1.0.0.jar
   Handles the client's request for patch notes to be sent and displayed on screen.
 ## Client Module
   Handle the client's local game and storage of user data.
+
+## Potential Issues
+    If JavaFX is not found, ensure that your project structure is set to Java 1.8 and not Java 21.
