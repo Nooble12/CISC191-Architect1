@@ -24,8 +24,8 @@ java -jar Client/target/Client-1.0.0.jar
   When opening the "Patch Notes" button, the client will send a request to the server for the update notes and the server will send back a string to be displayed on the JavaFX Window.
 
 ## Common Module
-Shared classes between client and server modules.
+  Handles the client's request to the server.
 ## Server Module
-The server application handles multiple clients.
+  Handles the client's request for patch notes to be sent and displayed on screen.
 ## Client Module
-The client application is used to connect to the server.
+  Handle the client's local game and storage of user data.
