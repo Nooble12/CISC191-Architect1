@@ -3,7 +3,7 @@ Intermediate Java Programming Architect Assignment 1
 ## Prerequisites
 1. Maven
 2. Git
-3. JDK 1.8
+3. JDK 1.8 (Will not run on JDK 21)
 ## Building
 mvn clean install
 ## Running
