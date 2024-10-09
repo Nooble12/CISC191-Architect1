@@ -74,7 +74,7 @@ public class ComputerItem extends Item implements Serializable
     public int getPercentToWin()
     {
         // percent
-        int PERCENT_TO_WIN = 75;
+        int PERCENT_TO_WIN = 80;
         return PERCENT_TO_WIN;
     }
 

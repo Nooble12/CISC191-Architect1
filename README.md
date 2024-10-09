@@ -17,7 +17,7 @@ java -jar Client/target/Client-1.0.0.jar
 ## Module 3: 
   The game is displayed using JavaFX. Windows such as the shop and inventory are separate .fxml files.
 ## Module 4: 
-  The Item class has numerous child classes such as foodItem class and ComputerItem class. Each item has its own implementation with different rewards, chances to fail, and names.
+  The Item class has numerous child classes such as foodItem class and ComputerItem class. Each item has its own implementation with different rewards, chances to fail, and names. The game is heavily based on OOP design such as polymorphism and inheritance.
 ## Module 5: 
   On exiting the game, player money and inventory will be saved via Java serialization class into a .ser file.
 ## Module 6: 
