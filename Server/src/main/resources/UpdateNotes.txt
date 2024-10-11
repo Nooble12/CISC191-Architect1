@@ -1,4 +1,4 @@
-Version 1.0
+Version 1.0.1
 This is a demo application for CISC 191 Architect #1 project.
 A simple game where players can purchase items and generate money.
 This was sent from a local server to demonstrate Java Socket networking.
