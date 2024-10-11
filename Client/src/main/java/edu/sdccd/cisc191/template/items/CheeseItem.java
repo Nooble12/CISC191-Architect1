@@ -36,7 +36,7 @@ public class CheeseItem extends FoodItem implements Serializable
     @Override
     public int getPercentToWin()
     {
-        return 90; // percent
+        return 95; // percent
     }
 
     /**
