@@ -1,5 +1,5 @@
 # CISC191
-Intermediate Java Programming Architect Assignment 1
+Intermediate Java Programming Architect Assignment 2
 ## Prerequisites
 1. Maven
 2. Git
@@ -9,6 +9,9 @@ mvn clean install
 ## Running
 java -jar Server/target/Server-1.0.0.jar  
 java -jar Client/target/Client-1.0.0.jar
+
+## Game not running
+If the game is not running, the database might be down. Comment out "context = SpringApplication.run(Main.class, args);" in the main class to run without database.
 
 ## Module 1: 
   In the game, a one-dimensional array stores a loot table of items that the player can roll to obtain items.
