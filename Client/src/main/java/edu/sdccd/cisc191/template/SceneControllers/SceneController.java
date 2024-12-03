@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.SceneControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,8 @@ public class SceneController
      */
     public void switchScene(ActionEvent event, String inScene) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource(inScene));
+        root = FXMLLoader.load(getClass().getResource("/edu/sdccd/cisc191/template/" + inScene));
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();;
         scene = new Scene(root);
         stage.setScene(scene);
@@ -96,5 +97,15 @@ public class SceneController
     public void switchToUpdateNotesScene(ActionEvent event) throws IOException
     {
         switchScene(event, "UpdateNotes.fxml");
+    }
+
+    public void switchToActionLoggerScene(ActionEvent event) throws IOException
+    {
+        switchScene(event, "ActionLogger.fxml");
+    }
+
+    public void switchToDatabaseStatsScene(ActionEvent event) throws IOException
+    {
+        switchScene(event, "DatabaseStats.fxml");
     }
 }

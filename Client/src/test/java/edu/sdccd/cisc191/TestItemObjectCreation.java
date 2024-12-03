@@ -1,7 +1,6 @@
 package edu.sdccd.cisc191;
 import edu.sdccd.cisc191.template.SearchGame.SearchGame;
-import edu.sdccd.cisc191.template.SearchGame.SearchSceneController;
-import edu.sdccd.cisc191.template.items.*;
+import edu.sdccd.cisc191.template.Items.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

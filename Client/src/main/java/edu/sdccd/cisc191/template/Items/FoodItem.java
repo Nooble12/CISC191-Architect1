@@ -1,7 +1,8 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
 
+import edu.sdccd.cisc191.template.ActionLogger.ActionLogger;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
-import edu.sdccd.cisc191.template.UseFoodController;
+import edu.sdccd.cisc191.template.SceneControllers.UseFoodSceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -46,6 +47,8 @@ public class FoodItem extends Item implements Serializable
     @Override
     public void useItem(Item inItem, ActionEvent actionEvent)
     {
+        ActionLogger logger = new ActionLogger();
+        logger.logAction("Used " + inItem.getItemName());
         try
         {
             switchToItemScene(actionEvent, inItem, "UseFoodResults.fxml");
@@ -69,7 +72,7 @@ public class FoodItem extends Item implements Serializable
         Parent root = loader.load();
 
         // Set the controller with the item
-        UseFoodController controller = loader.getController();
+        UseFoodSceneController controller = loader.getController();
         controller.setItem(inItem);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

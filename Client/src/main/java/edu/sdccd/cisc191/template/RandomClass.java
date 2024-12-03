@@ -1,5 +1,5 @@
 package edu.sdccd.cisc191.template;
-import edu.sdccd.cisc191.template.items.Item;
+import edu.sdccd.cisc191.template.Items.Item;
 
 import java.util.ArrayList;
 import java.util.Random;

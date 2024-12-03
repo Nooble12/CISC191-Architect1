@@ -1,14 +1,14 @@
-package edu.sdccd.cisc191.template.SearchGame;
+package edu.sdccd.cisc191.template.SceneControllers;
 
+import edu.sdccd.cisc191.template.ActionLogger.ActionLogger;
 import edu.sdccd.cisc191.template.RandomClass;
-import edu.sdccd.cisc191.template.SceneController;
-import javafx.event.ActionEvent;
+import edu.sdccd.cisc191.template.SearchGame.SearchGame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
-public class SearchSceneController
+public class SearchSceneController extends SceneController
 {
     @FXML
     private Label resultsDescription;
@@ -28,6 +28,8 @@ public class SearchSceneController
      */
     public void runGame()
     {
+        ActionLogger logger = new ActionLogger();
+        logger.logAction("Searched For Item");
         updateResultsDescription();
         if (searchGame.didPlayerWin())
         {
@@ -61,16 +63,5 @@ public class SearchSceneController
         messages.add("Searching a computer...");
         messages.add("Searching a park...");
         return messages;
-    }
-
-    /**
-     * Switches the scene back to the main menu when the player presses the back button.
-     * @param event allows the scene to change.
-     * @throws IOException if the main menu .fxml file could not be found.
-     */
-    public void switchToMainMenu(ActionEvent event) throws IOException
-    {
-        SceneController controller = new SceneController();
-        controller.switchToMainMenu(event);
     }
 }

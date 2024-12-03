@@ -1,7 +1,8 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.SceneControllers;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
-import edu.sdccd.cisc191.template.items.Item;
+import edu.sdccd.cisc191.template.RandomClass;
+import edu.sdccd.cisc191.template.Items.Item;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

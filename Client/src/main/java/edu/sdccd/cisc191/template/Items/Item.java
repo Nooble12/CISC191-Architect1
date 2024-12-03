@@ -1,6 +1,6 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
 
-import edu.sdccd.cisc191.template.UseItemSceneController;
+import edu.sdccd.cisc191.template.SceneControllers.UseItemSceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -175,5 +175,10 @@ public class Item implements Serializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public String getItemImageFile()
+    {
+        return "N/A";
     }
 }

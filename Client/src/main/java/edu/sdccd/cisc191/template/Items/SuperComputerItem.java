@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
 import java.io.Serializable;
 
 

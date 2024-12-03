@@ -1,5 +1,6 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.SceneControllers;
 
+import edu.sdccd.cisc191.template.ServerRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

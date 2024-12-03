@@ -1,4 +1,5 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
+import edu.sdccd.cisc191.template.ActionLogger.ActionLogger;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.io.Serializable;
@@ -31,6 +32,8 @@ public class PhoneItem extends Item implements Serializable
     @Override
     public void useItem(Item inItem, ActionEvent actionEvent)
     {
+        ActionLogger logger = new ActionLogger();
+        logger.logAction("Used " + inItem.getItemName());
         try
         {
             switchToItemScene(actionEvent, inItem, "UseItemResults.fxml");

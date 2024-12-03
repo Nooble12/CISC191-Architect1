@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 
 import java.io.Serializable;
@@ -50,6 +50,12 @@ public class CheeseItem extends FoodItem implements Serializable
         list.add("While eating, you chocked on a piece and died!");
         list.add("After eating, you turned into a cheese and died!");
         return list;
+    }
+
+    @Override
+    public String getItemImageFile()
+    {
+        return "cheese_ghost.png";
     }
 
     @Override

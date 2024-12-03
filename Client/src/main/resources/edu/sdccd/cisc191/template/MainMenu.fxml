@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.sdccd.cisc191.template.SceneController">
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.sdccd.cisc191.template.SceneControllers.SceneController">
    <children>
       <Button layoutX="14.0" layoutY="884.0" mnemonicParsing="false" onAction="#switchToLauncherPage" prefHeight="100.0" prefWidth="200.0" text="Back">
          <font>
@@ -60,5 +60,15 @@
             </Button>
          </children>
       </GridPane>
+      <Button layoutX="629.0" layoutY="884.0" mnemonicParsing="false" onAction="#switchToActionLoggerScene" prefHeight="102.0" prefWidth="356.0" text="Action Logger">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Button>
+      <Button layoutX="629.0" layoutY="775.0" mnemonicParsing="false" onAction="#switchToDatabaseStatsScene" prefHeight="102.0" prefWidth="356.0" text="Database Stats">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

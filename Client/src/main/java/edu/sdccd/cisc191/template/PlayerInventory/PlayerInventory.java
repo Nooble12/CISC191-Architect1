@@ -1,5 +1,5 @@
 package edu.sdccd.cisc191.template.PlayerInventory;
-import edu.sdccd.cisc191.template.items.Item;
+import edu.sdccd.cisc191.template.Items.Item;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,6 +13,18 @@ public class PlayerInventory implements Serializable
 {
     private static PlayerInventory instance;
     private Map<Item, Integer> inventoryItems = new HashMap<>();
+
+    /**
+     * Calculates the inventory value by getting all items in the HashMap and multiplying by their respective item prices.
+     * Transform the HashMap to a return type of Double
+     * @return the summation of all inventory items.
+     */
+    public double getInventorySumValue()
+    {
+        return inventoryItems.entrySet().stream()
+                .mapToDouble(entry -> entry.getKey().getItemPrice() * entry.getValue())
+                .sum();
+    }
 
     /**
      * Adds an item to the inventory hash map to be stored.

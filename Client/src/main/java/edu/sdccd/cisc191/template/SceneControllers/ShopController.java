@@ -1,12 +1,12 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.SceneControllers;
 
+import edu.sdccd.cisc191.template.ActionLogger.ActionLogger;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
-import edu.sdccd.cisc191.template.items.CheeseItem;
-import edu.sdccd.cisc191.template.items.ComputerItem;
-import edu.sdccd.cisc191.template.items.Item;
-import edu.sdccd.cisc191.template.items.PhoneItem;
-import javafx.event.ActionEvent;
+import edu.sdccd.cisc191.template.Items.CheeseItem;
+import edu.sdccd.cisc191.template.Items.ComputerItem;
+import edu.sdccd.cisc191.template.Items.Item;
+import edu.sdccd.cisc191.template.Items.PhoneItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
-import java.io.IOException;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -23,7 +23,7 @@ import java.util.Locale;
  * This class allows the player to purchase items from buttons displayed on a GridPane.
  * @author Tim Tran
  */
-public class ShopController {
+public class ShopController extends SceneController {
     @FXML
     private Text playerBalanceText;
     @FXML
@@ -53,7 +53,7 @@ public class ShopController {
     {
         itemArray[0][0] = new PhoneItem(1000, "Phone", "Well, it is a phone. What else can I say?");
         itemArray[0][1] = new ComputerItem(1500, "Computer", "Well, it is a computer. What else can I say?");
-        itemArray[1][1] = new CheeseItem(10000, "Cheese", "Adds 1 Money Multiplier");
+        itemArray[1][1] = new CheeseItem(10000, "Cheese", "Adds 1 Money Multiplier.");
         itemArray[1][0] = new Item(150000, "Investment Account", "Invest your money or something, idk.");
        // itemArray[1][1] = new Item(150000, "Test1", "Not worth buying");
     }
@@ -137,6 +137,8 @@ public class ShopController {
             playerAccount.subtractBalance(item.getItemPrice());
             //PlayerInventory.getInstance().displayInventory();
             updateShopScene(item, inButton);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction("Purchased Item: " + item.getItemName());
         }
     }
 
@@ -147,21 +149,13 @@ public class ShopController {
      */
     private void updateShopScene(Item item, Button inButton)
     {
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        currencyFormat.setMaximumFractionDigits(0);
+
         BankAccount playerAccount = new BankAccount();
         PlayerInventory inventory = PlayerInventory.getInstance();
         int quantity = inventory.getItemQuantity(item);
-        inButton.setText(item.getItemName() + "\n$" + item.getItemPrice() + "\n" + "x" + quantity);
+        inButton.setText(item.getItemName() + "\n" + currencyFormat.format(item.getItemPrice()) + "\n" + "x" + quantity);
         playerBalanceText.setText(playerAccount.toString());
-    }
-
-    /**
-     * Switches the scene back to the main menu after pressing the back button.
-     * @param event allows the scene to change.
-     * @throws IOException if the scene could not be found.
-     */
-    public void switchToMainMenu(ActionEvent event) throws IOException
-    {
-        SceneController sceneController = new SceneController();
-        sceneController.switchScene(event, "MainMenu.fxml");
     }
 }

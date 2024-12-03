@@ -1,6 +1,6 @@
-package edu.sdccd.cisc191.template.PlayerInventory;
-import edu.sdccd.cisc191.template.SceneController;
-import edu.sdccd.cisc191.template.items.Item;
+package edu.sdccd.cisc191.template.SceneControllers;
+import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
+import edu.sdccd.cisc191.template.Items.Item;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -10,9 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -21,7 +23,7 @@ import java.util.Map;
  * Allows the player to use items.
  * @author Tim Tran
  */
-public class InventorySceneController
+public class InventorySceneController extends SceneController
 {
 
     private Stage stage;
@@ -33,6 +35,9 @@ public class InventorySceneController
 
     @FXML
     private Label descriptionLabel;
+
+    @FXML
+    private Text inventoryValueLabel;
 
     PlayerInventory playerInventory = PlayerInventory.getInstance();
 
@@ -48,6 +53,20 @@ public class InventorySceneController
     {
         playerInventory = PlayerInventory.getInstance();
         displayInventory();
+        displayInventoryValue();
+    }
+
+    /**
+     * Displays the total inventory value by calling the getInventorySumValue and setting the inventoryValueLabel to the return.
+     */
+    private void displayInventoryValue()
+    {
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        currencyFormat.setMaximumFractionDigits(0);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("Total Value: ").append(currencyFormat.format(playerInventory.getInventorySumValue()));
+        inventoryValueLabel.setText(builder.toString());
     }
 
     /**
@@ -90,18 +109,6 @@ public class InventorySceneController
     private void handleItemClick(Item item, ActionEvent e)
     {
         item.useItem(item, e);
-    }
-
-    /**
-     * Switches the scene back to the main menu when the player clicks the back button.
-     * Uses the SceneController class to switch scenes.
-     * @param event used to switch the scene.
-     * @throws IOException if the scene could not be found.
-     */
-    public void switchToMainMenu(ActionEvent event) throws IOException
-    {
-       SceneController controller = new SceneController();
-       controller.switchToMainMenu(event);
     }
 
     /**

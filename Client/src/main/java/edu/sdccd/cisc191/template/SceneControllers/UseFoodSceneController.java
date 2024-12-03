@@ -1,10 +1,13 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.SceneControllers;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
-import edu.sdccd.cisc191.template.items.Item;
+import edu.sdccd.cisc191.template.RandomClass;
+import edu.sdccd.cisc191.template.Items.Item;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import java.io.IOException;
 
@@ -13,7 +16,7 @@ import java.io.IOException;
  * Also controls the UseFoodResults.fxml scene.
  * @author Tim Tran
  */
-public class UseFoodController
+public class UseFoodSceneController
 {
         @FXML
         private Label resultsDescription;
@@ -21,6 +24,8 @@ public class UseFoodController
         private Label rewardsDescription;
         @FXML
         private Text itemUsedLabel;
+        @FXML
+        private ImageView itemUsedImageView;
 
         private Item item;
 
@@ -45,6 +50,14 @@ public class UseFoodController
             sceneController.switchScene(event, "Inventory.fxml");
     }
 
+    private void setupUsedItemImage()
+    {
+        Image image = new Image(getClass().getResourceAsStream("/Images/" + item.getItemImageFile()));
+        itemUsedImageView.setImage(image);
+        itemUsedImageView.setPreserveRatio(true);
+        itemUsedImageView.isVisible();
+    }
+
     /**
      * If the player has an item, the eat food game will run.
      */
@@ -52,6 +65,7 @@ public class UseFoodController
     {
         if (item != null)
         {
+            setupUsedItemImage();
             runGame();
         }
         else

@@ -1,8 +1,7 @@
 package edu.sdccd.cisc191;
 
-import edu.sdccd.cisc191.template.ShopController;
-import edu.sdccd.cisc191.template.items.Item;
-import edu.sdccd.cisc191.template.items.*;
+import edu.sdccd.cisc191.template.SceneControllers.ShopController;
+import edu.sdccd.cisc191.template.Items.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

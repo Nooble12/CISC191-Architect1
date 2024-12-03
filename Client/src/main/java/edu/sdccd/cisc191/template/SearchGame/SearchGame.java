@@ -3,7 +3,7 @@ package edu.sdccd.cisc191.template.SearchGame;
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
 import edu.sdccd.cisc191.template.RandomClass;
-import edu.sdccd.cisc191.template.items.*;
+import edu.sdccd.cisc191.template.Items.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Random;

@@ -2,7 +2,7 @@ package edu.sdccd.cisc191.template.PlayerSettings;
 
 import edu.sdccd.cisc191.template.PlayerData.BankAccount;
 import edu.sdccd.cisc191.template.PlayerInventory.PlayerInventory;
-import edu.sdccd.cisc191.template.SceneController;
+import edu.sdccd.cisc191.template.SceneControllers.SceneController;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;

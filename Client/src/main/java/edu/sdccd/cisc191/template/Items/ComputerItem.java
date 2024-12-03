@@ -1,5 +1,6 @@
-package edu.sdccd.cisc191.template.items;
+package edu.sdccd.cisc191.template.Items;
 
+import edu.sdccd.cisc191.template.ActionLogger.ActionLogger;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.io.Serializable;
@@ -32,6 +33,8 @@ public class ComputerItem extends Item implements Serializable
     @Override
     public void useItem(Item item, ActionEvent actionEvent)
     {
+        ActionLogger logger = new ActionLogger();
+        logger.logAction("Used " + item.getItemName());
         try
         {
             switchToItemScene(actionEvent, item, "UseItemResults.fxml");
