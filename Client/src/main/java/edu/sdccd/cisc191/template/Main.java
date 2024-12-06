@@ -5,9 +5,13 @@ import edu.sdccd.cisc191.template.PlayerData.PlayerDataManager;
 import edu.sdccd.cisc191.template.PlayerData.PlayerStatistics;
 import edu.sdccd.cisc191.template.Repository.PlayerStatisticRepository;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.boot.CommandLineRunner;
@@ -43,8 +47,23 @@ public class Main extends Application
     {
         localDataManager.loadPlayerData();
         gameTimer.start();
-        context = SpringApplication.run(Main.class, args); //database offline for now
 
+        try
+        {
+            context = SpringApplication.run(Main.class, args); //database offline for now
+        }
+        catch(Exception e)
+        {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Database Connection Error");
+                alert.setHeaderText("An unexpected error occurred.");
+                alert.setContentText("Your game will now run in offline mode. Gameplay will not be affected.");
+                alert.getDialogPane().getScene().getWindow().setX(200);
+                alert.getDialogPane().getScene().getWindow().setY(200);
+                alert.show();
+            });
+        }
         launch(args);
     }
 
